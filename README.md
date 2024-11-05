@@ -10,3 +10,9 @@ I wasn't planning to include anything particularly new but I know there will be 
 My ideal outcome for this project would be to create a game that focuses mainly on dialogue and choices that the player makes to be able to make it to leadership within the world. I think to make it more exciting I will try to implement some pixel sprite art if applicable. I would also like for there to be many different endings (good and bad), with some being 'rarer' than others.
 
 However, the minimal outcome would be to create a text based adventure game that features the player having one simple objective and for the storyline to be linear and for very little things to branch off the main storyline. It would mean that the game would be repetitive and boring, however, I think that I will be able to at least implement a few different storylines.
+
+My weekly milestones include the following:
+
+In the first week, a milestone would be to have at least 25-50% of the storyline figured out or planned.
+Have at least half of one part of the game done--whether this be a character, a storyline, a dialogue system, or a new feature such an inventory or stats.
+Fix bugs that may be present from previous weeks.
