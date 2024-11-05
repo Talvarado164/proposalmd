@@ -14,5 +14,9 @@ However, the minimal outcome would be to create a text based adventure game that
 My weekly milestones include the following:
 
 -In the first week, a milestone would be to have at least 25-50% of the storyline figured out or planned.
+
+
 -Have at least half of one part of the game done--whether this be a character, a storyline, a dialogue system, or a new feature such an inventory or stats.
+
+
 -Fix bugs that may be present from previous weeks.
