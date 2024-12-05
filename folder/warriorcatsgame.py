@@ -42,7 +42,7 @@ def upgrade_to_warrior(name, stats):
     return name
 
 
-def scenario_hunting(name, stats):
+def hunting_scenario(name, stats):
     #Scenario 1 in this game--a simple hunting scenario that uses your stats to determine how successful the choice you make will be.
     """Scenario 1: Hunting"""
     print("Scenario 1: Hunting")
@@ -76,7 +76,7 @@ def rival_battle(name, stats, special_ability):
         "Agility": random.randint(5, 15),
         "Intelligence": random.randint(5, 15),
     }
-    print(f"A rival cat, {rival_name}, challenges you to a fight!")
+    print(f"A rival cat, {rival_name}, charges at you during battle!")
     print(f"Rival Stats: {rival_stats}")
     print("1. Fight back! (Strength needed)")
     print("2. Use your brain to strategize necessary attacks. (Intelligence needed)")
@@ -102,3 +102,34 @@ def rival_battle(name, stats, special_ability):
     else:
         print(f"{name} is defeated by {rival_name}. {name} runs back to camp, injured!")
         return -10
+
+
+def stealth_escape(name, stats, special_ability):
+    #Scenario 3--your character must choose how they confront a dangerous animal during their hunt! stealth ability can be utilized for this scenario.
+    """Scenario 3: You encounter a dangerous animal while hunting!"""
+    print("\nScenario 3: Dangerous encounter")
+    print("You find yourself face to face with a badger!")
+    print("1. Fight back! (Strength needed)")
+    print("2. Use your smaller size to your advantage and escape! (Intelligence needed)")
+    print("3. Use your unique ability. (Unique ability utilized)")
+
+    choice = input("What do you do? (1/2/3): ")
+    if choice == "1" and stats["Strength"] > 12:
+        print(f"{name} claws the badger's eyes and escape when it turns tail and runs! Nice!")
+        return 10
+    elif choice == "2" and stats["Intelligence"] > 12:
+        print(f"{name} uses their smaller size to dodge the badger's attack and escape! Success!")
+        return 10
+    elif choice == "3":
+        if special_ability == "Stealth":
+            print(f"{name} uses their stealth to escape without a trace!")
+            return 10
+        else:
+            print(f"{name}'s unique ability isn't useful here.")
+            return -5
+    else:
+        print(f"{name} is roughed up by the badger and scampers off to camp after escaping with critical injuries. Try again.")
+        return -10
+
+if __name__ == "__main__":
+    main()
