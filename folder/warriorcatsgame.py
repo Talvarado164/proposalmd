@@ -67,6 +67,7 @@ def scenario_hunting(name, stats):
 
 
 def rival_battle(name, stats, special_ability):
+    #Scenario 2 features a battle with a rival clan member! Use stats and unique abilities wisely to defeat the opponent.
     """Scenario 2: Rival battle."""
     print("\nScenario 2: Rival Battle")
     rival_name = random.choice(["Shiver-paw", "Tiger-claw", "Leaf-paw"])
