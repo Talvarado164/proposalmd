@@ -1,6 +1,8 @@
 import random
 import cowsay
 import pyfiglet
+from tkinter import Tk, Label
+from PIL import Image, ImageTk, ImageDraw, ImageFont
 
 
 def render_text(text, font="digital"):
@@ -47,7 +49,9 @@ def upgrade_to_warrior(name, stats, successful_scenarios):
     if successful_scenarios >= 2:    
         name = replace_suffix(name)
         print(f"\n{name} has earned their warrior name!")
-        
+    return name
+
+
 def hunting_scenario(name, stats):
     print(("Scenario 1: Hunting"))
     print(("You spot a bird on a branch--it looks like it is foraging for something. You think about what you should do."))
@@ -133,7 +137,32 @@ def stealth_escape(name, stats, special_ability):
 
 
 def display_victory_image():
-    print("\nCongratulations! You are now a warrior!")
+    image_path = r"C:\Users\ghost\proposalmd\src\cat.png"
+
+    img = Image.open(image_path)
+
+    draw = ImageDraw.Draw(img)
+
+    try:
+        font = ImageFont.truetype("CourierNew.ttf", 25) 
+    except IOError:
+        font = ImageFont.load_default()  
+
+    text = "Congratulations! You are now a warrior cat!"
+    text_position = (50, 50)
+    text_color = (255, 255, 255) 
+
+    draw.text(text_position, text, font=font, fill=text_color)
+
+    root = Tk()
+    root.title("Congratulations! You are now a warrior!")
+    
+    img_tk = ImageTk.PhotoImage(img)
+    
+    label = Label(root, image=img_tk)
+    label.pack()
+
+    root.mainloop()
 
 def main():
     name, clan, stats, unique_ability = create_cat()
@@ -151,12 +180,11 @@ def main():
 
     name = upgrade_to_warrior(name, stats, successful_scenarios)
 
-    if successful_scenarios > 2:
+    if successful_scenarios >= 2:
         print(f"Congratulations! {name} has become a warrior!")
-    if successful_scenarios < 2:
+        display_victory_image()  #Open the image in new window
+    else:
         print(f"{name} has many moons ahead to yet become a warrior")
-    if successful_scenarios > 2:
-        display_victory_image()
 
 
 if __name__ == "__main__":
