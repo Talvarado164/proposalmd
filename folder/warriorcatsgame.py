@@ -1,7 +1,7 @@
 import random
 
 
-def create_character():
+def create_cat():
     #Create a cat character in the warriors universe beginning with the suffix -paw to sybolize apprenticeship
     print("Welcome to a Warrior Cats text-based adventure game! Let's get our character started.")
     prefix = input("Choose a nature-based prefix! (Leaf, Snow, Fire, Ice, etc.):")
@@ -35,8 +35,7 @@ def upgrade_to_warrior(name, stats):
     if total_stats > 40:  
         suffixes = ["dapple", "tail", "pelt", "fur", "nose", "flight", "song", "fur"]
         new_suffix = random.choice(suffixes)
-        prefix = name.split("-")[0]
-        name = prefix + "-" + new_suffix
+        name = name.split("-")[0] + f"-{new_suffix}"
         print(f"\nYour clan leader has decided that {name} has earned their warrior suffix!")
     else:
         print(f"\n{name} has many moons ahead to earn their warrior name.")
@@ -65,3 +64,40 @@ def scenario_hunting(name, stats):
     else:
         print(f"{name} fails to catch the bird and watches it fly away, alerting the other prey in the area.")
         return -5
+
+
+def rival_battle(name, stats, special_ability):
+    """Scenario 2: Rival battle."""
+    print("\nScenario 2: Rival Battle")
+    rival_name = random.choice(["Shiver-paw", "Tiger-claw", "Leaf-paw"])
+    rival_stats = {
+        "Strength": random.randint(5, 15),
+        "Agility": random.randint(5, 15),
+        "Intelligence": random.randint(5, 15),
+    }
+    print(f"A rival cat, {rival_name}, challenges you to a fight!")
+    print(f"Rival Stats: {rival_stats}")
+    print("1. Fight back! (Strength needed)")
+    print("2. Use your brain to strategize necessary attacks. (Intelligence needed)")
+    print("3. Utilize unique ability. (Unique ability is used)")
+
+    choice = input("Choose your strategy (1/2/3): ")
+    if choice == "1" and stats["Strength"] > rival_stats["Strength"]:
+        print(f"{name} defeats {rival_name} in battle! Nice job!")
+        return 15
+    elif choice == "2" and stats["Intelligence"] > rival_stats["Intelligence"]:
+        print(f"{name} outsmarts {rival_name} and wins! Awesome!")
+        return 15
+    elif choice == "3":
+        if special_ability == "Extra Strength":
+            print(f"{name} uses Extra Strength to seriously do some damage to {rival_name}. The opponent scampers off!")
+            return 15
+        elif special_ability == "Healing":
+            print(f"{name} feels the adrenaline come through and recovers quick to successfully defeat {rival_name}!")
+            return 15
+        else:
+            print(f"{name} escapes by disappearing into the trees. The opponent looks around confusedly. Nice job!")
+            return 15
+    else:
+        print(f"{name} is defeated by {rival_name}. {name} runs back to camp, injured!")
+        return -10
